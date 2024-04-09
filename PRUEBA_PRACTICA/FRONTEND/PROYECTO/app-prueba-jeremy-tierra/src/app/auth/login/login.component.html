@@ -1,0 +1,71 @@
+<body class="antialiased bg-gradient-to-br from-gray-100 to-white">
+  <div class="container px-6 mx-auto">
+    <div
+      class="flex flex-col text-center md:text-left md:flex-row h-screen justify-evenly md:items-center"
+    >
+      <div class="flex flex-col w-full">
+        <div>
+        </div>
+        <h1 class="text-5xl text-gray-800 font-bold">Proyecto JT</h1>
+        <p class="w-5/12 mx-auto md:mx-0 text-gray-500">
+          Proyecto Prueba
+        </p>
+      </div>
+      <div class="w-full md:w-full lg:w-9/12 mx-auto md:mx-0">
+        <div class="bg-white p-10 flex flex-col w-full shadow-xl rounded-xl">
+          <h2 class="text-2xl font-bold text-gray-800 text-left mb-5">
+            Ingreso
+          </h2>
+          <form (submit)="login($event)" class="w-full">
+            <div id="input" class="flex flex-col w-full my-5">
+              <label for="username" class="text-gray-500 mb-2"
+                >Username</label
+              >
+              <input
+                type="text"
+                    [(ngModel)]="username"
+                id="username"
+                name="username"
+                placeholder="Inserta tu nombre de usuario"
+                class="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+              />
+            </div>
+            <div id="input" class="flex flex-col w-full my-5">
+              <label for="password" class="text-gray-500 mb-2"
+                >Contraseña</label
+              >
+              <input
+              [(ngModel)]="password"
+                name="username"
+                type="password"
+                id="password"
+                placeholder="Please insert your password"
+                class="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+              />
+            </div>
+            <div id="button" class="flex flex-col w-full my-5">
+              <button
+                type="submit"
+                class="w-full py-4 bg-blue-600 rounded-lg text-green-100"
+              >
+                <div class="flex flex-row items-center justify-center">
+                  <div class="mr-2">
+
+                  </div>
+                  <div class="font-bold">Ingresar</div>
+                </div>
+              </button >
+              <div class="flex justify-evenly mt-5">
+
+                <a [routerLink]="['/register']"
+                  class="w-full text-center font-medium text-gray-500"
+                  >Registrarse!</a
+                >
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

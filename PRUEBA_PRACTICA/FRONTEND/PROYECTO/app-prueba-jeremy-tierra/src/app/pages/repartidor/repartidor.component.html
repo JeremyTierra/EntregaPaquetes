@@ -1,0 +1,19 @@
+<div class="container mx-auto mt-8">
+    <h2 class="text-xl font-bold mb-4">Paquetes Asignados</h2>
+    <ul>
+      <li *ngFor="let paquete of paquetes">
+        <div class="border rounded p-4 mb-4">
+          <p><strong>ID del Paquete:</strong> {{ paquete.id }}</p>
+          <p><strong>Peso:</strong> {{ paquete.peso }}</p>
+          <p><strong>Destino:</strong> {{ paquete.destino }}</p>
+          <p><strong>Información del Emisor:</strong> {{ paquete.informacionEmisor }}</p>
+          <p><strong>Información del Receptor:</strong> {{ paquete.informacionReceptor }}</p>
+          <p><strong>Etiqueta:</strong> {{ paquete.etiqueta }}</p>
+          <p><strong>Estado:</strong> {{ paquete.estado }}</p>
+          <button [disabled]="paquete.estado == 'ENTREGADO'" (click)="actualizarEstadoPaquete(paquete, 'EN_TRANSITO')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50">Marcar como En tránsito</button>
+          <button [disabled]="paquete.estado !== 'EN_TRANSITO'" (click)="actualizarEstadoPaquete(paquete, 'ENTREGADO')" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50">Marcar como Entregado</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  

@@ -1,0 +1,47 @@
+<div class="min-h-screen bg-gray-100 flex justify-center items-center">
+    <div class="max-w-md w-full bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <h2 class="text-center text-xl font-bold mb-6">Registrar Nuevo Paquete</h2>
+      <form [formGroup]="paqueteForm" (ngSubmit)="onSubmit()">
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="peso">
+            Peso
+          </label>
+          <input formControlName="peso" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="peso" placeholder="Peso">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="destino">
+            Destino
+          </label>
+          <input formControlName="destino" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="destino" placeholder="Destino">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="informacionEmisor">
+            Información del Emisor
+          </label>
+          <input formControlName="informacionEmisor" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="informacionEmisor" placeholder="Información del Emisor">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="informacionReceptor">
+            Información del Receptor
+          </label>
+          <input formControlName="informacionReceptor" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="informacionReceptor" placeholder="Información del Receptor">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="etiqueta">
+              Etiqueta
+            </label>
+            <select formControlName="etiqueta" id="etiqueta" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+              <option value="" disabled selected>Selecciona una etiqueta</option>
+              <option value="fragil">Frágil</option>
+              <option value="urgente">Documento</option>
+              <option value="normal">Normal</option>
+            </select>
+          </div>
+          
+        <div class="flex items-center justify-between">
+          <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Registrar Paquete</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

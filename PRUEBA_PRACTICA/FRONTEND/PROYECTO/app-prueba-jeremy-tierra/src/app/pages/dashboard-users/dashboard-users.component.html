@@ -1,0 +1,134 @@
+<!-- register.component.html -->
+<section class="flex flex-row  bg-gray-50 dark:bg-gray-900 p-10">
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:min-h-screen lg:py-0">
+    <div
+      class="flex flex-row w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+      <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+        <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+          Detalles del Usuario
+        </h1>
+
+        <!-- Datos del Usuario -->
+        <div class="">
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre Completo:</label>
+            <p class="text-gray-700 dark:text-gray-300">{{ user.username }} {{ user.lastName }}</p>
+          </div>
+
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo Electrónico:</label>
+            <p class="text-gray-700 dark:text-gray-300">{{ user.email }}</p>
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">IP:</label>
+            <p class="text-gray-700 dark:text-gray-300">{{ user.ip }}</p>
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Oficina:</label>
+            <p class="text-gray-700 dark:text-gray-300">{{ user.office}}</p>
+          </div>
+        </div>
+
+        <!-- Roles del Usuario -->
+        <div class="mt-6">
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Roles del Usuario:</label>
+          <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+            <li *ngFor="let role of user.roles">{{ role.role }}</li>
+          </ul>
+        </div>
+
+        <!-- Button to open the Change Password Modal -->
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          (click)="openChangePasswordModal()">
+          Cambiar Contraseña
+        </button>
+      </div>
+
+      <!-- Imagen del Usuario -->
+      <div class="p-6 flex items-center">
+        <img class="imgUser w-32 h-32 rounded-full object-cover" [src]="user.image || 'https://via.placeholder.com/150'"
+          alt="">
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:min-h-screen lg:py-0">
+    <div
+      class="flex flex-row w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+      <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+        <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+          Maquinas de Usuario
+        </h1>
+
+        <!-- Roles del Usuario -->
+        <div class="mt-6">
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Codigo de maquinas De
+            usuario</label>
+          <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
+            <li *ngFor="let userM of machinesUser">
+              {{ userM.maquina.codigo }}
+              <br> <b> {{ userM.maquina.estado }} </b>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Button to open the Change Password Modal -->
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          (click)="requestMachine()">
+          Solicitar Maquina
+        </button>
+      </div>
+
+
+    </div>
+  </div>
+
+
+
+
+  <!-- Change Password Modal -->
+  <div class="fixed z-10 inset-0 overflow-y-auto" *ngIf="showChangePasswordModal">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <!-- Background overlay -->
+      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+      </div>
+
+      <!-- Modal content -->
+      <div
+        class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <h3 class="text-lg leading-6 font-medium text-gray-900">
+            Cambiar Contraseña
+          </h3>
+          <div class="mt-2">
+            <form (submit)="changePassword()">
+
+              <div class="mb-4">
+                <label for="newPassword" class="block text-sm font-medium text-gray-700">Contraseña </label>
+                <input type="password" id="newPassword" name="newPassword" class="mt-1 p-2 border rounded-md w-full">
+              </div>
+              <div class="mb-4">
+                <label for="Password" class="block text-sm font-medium text-gray-700">Contraseña Confirmar
+                  contraseña</label>
+                <input type="password" [(ngModel)]="newPassword" id="Password" name="Password"
+                  class="mt-1 p-2 border rounded-md w-full">
+              </div>
+
+
+              <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Guardar Cambios
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+          <button type="button"
+            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-500 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+            (click)="closeChangePasswordModal()">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
